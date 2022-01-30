@@ -83,15 +83,29 @@
                     FontSize="20"
                     FontWeight="SemiBold"
                     Foreground="#353b48" />
-                <!--  地名選択  -->
-                <ComboBox
-                    Grid.Row="0"
-                    Width="50"
-                    HorizontalAlignment="Right"
-                    BorderThickness="0"
-                    DisplayMemberPath="Value"
-                    ItemsSource="{Binding PrefecturesDict}"
-                    SelectedValuePath="Key" />
+
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <!--  地名選択  -->
+                    <ComboBox
+                        Grid.Row="0"
+                        Width="70"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        BorderThickness="0"
+                        DisplayMemberPath="Value"
+                        ItemsSource="{Binding PrefecturesDict}"
+                        SelectedValue="{Binding SelectedPrefecture}"
+                        SelectedValuePath="Key" />
+                    <Button
+                        Width="50"
+                        Margin="10"
+                        Background="#718093"
+                        BorderThickness="0"
+                        Command="{Binding GetLatestWeatherCommand}"
+                        Content="更新"
+                        Foreground="#dcdde1" />
+                </StackPanel>
+
 
                 <!--  詳細  -->
                 <Border
@@ -130,13 +144,13 @@
                             Grid.Row="2"
                             HorizontalAlignment="Center"
                             Foreground="#7f8fa6"
-                            Text="{Binding WeatherModel.ReportTime, StringFormat=yyyy/MM/dd HH:mm:ss に発表}" />
+                            Text="{Binding WeatherModel.ReportDatetime, StringFormat=yyyy/MM/dd HH:mm:ss に発表}" />
                         <!--  発表元  -->
                         <TextBlock
                             Grid.Row="3"
                             HorizontalAlignment="Center"
                             Foreground="#7F8fa6"
-                            Text="{Binding WeatherModel.PublisherName, StringFormat=発表者: {0}}" />
+                            Text="{Binding WeatherModel.PublishingOffice, StringFormat=発表者: {0}}" />
                     </Grid>
 
                 </Border>
